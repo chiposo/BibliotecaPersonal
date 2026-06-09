@@ -1,0 +1,16 @@
+=========== REPORTE DE BIBLIOTECA ===========
+
+ID: 2
+Titulo: juana
+Autor: pedroza
+Anio: 2022
+Genero: litera
+Estado: Sin existencia
+-----------------------------------------
+ID: 2
+Titulo: juana
+Autor: pedro
+Anio: 2022
+Genero: mas
+Estado: Disponible
+-----------------------------------------
