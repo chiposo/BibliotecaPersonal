@@ -47,14 +47,15 @@ void barraprogreso(char mensaje[]){
     for(int i=0; i<30; i++)
     {
         cout << (char)219;
-        Sleep(10);
+        Sleep(2);
     }
     cout << "] 100%\n";
 }
 void pausa();
 void pausa(){
-    cout << "\n\nPresiona ENTER para continuar...";
-    cin.ignore();
+    cout << "\nPresiona ENTER para continuar...";
+    cin.clear();
+    cin.ignore(1000,'\n');
     cin.get();
 }
 void portada();
@@ -72,7 +73,6 @@ void portada(){
 void rapido();
 void rapido(){
     barraprogreso("Cargando....");
-    Sleep(50);
     system("cls");
 };
 int buscarid(int id);
@@ -141,9 +141,6 @@ void agregar(){
     rapido();
     nuevo->estado=DISPONIBLE;
     guardar();
-    cout << "\n El libro fue agregado correctamente \n";
-    cin.ignore();
-    pausa();
 
 
 
@@ -211,8 +208,9 @@ void buscaritem(){
 
         cout << "\n+------------------------------------------------+\n";
     }
-    cout << endl;
     pausa();
+    cout << endl;
+
 
 
 }
@@ -281,7 +279,7 @@ void modificar(){
 
     if(posicion == -1){
         cout << "\n Libro no encontrado \n";
-        pausa();
+        Sleep(1000);
         return;
     }
 
@@ -333,7 +331,8 @@ void modificar(){
                 cout << "*          ESTADO MODIFICADO CORRECTAMENTE                 *\n";
                 cout << "*                                                          *\n";
                 cout << "************************************************************\n";
-                pausa();
+                Sleep(200);
+                rapido();
 
                 break;
         case 2:     
@@ -372,7 +371,8 @@ void modificar(){
                 cout << "*          LIBRO MODIFICADO CORRECTAMENTE                  *\n";
                 cout << "*                                                          *\n";
                 cout << "************************************************************\n";
-                pausa();
+                Sleep(200);
+                rapido();
                 
                 break;
         default: return;
@@ -423,7 +423,8 @@ void eliminar(){
     cout << "*           LIBRO ELIMINADO CORRECTAMENTE                  *\n";
     cout << "*                                                          *\n";
     cout << "************************************************************\n";
-    pausa();
+    Sleep(200);
+    rapido();
     guardar();
 }
 
@@ -439,13 +440,12 @@ void guardar(){
     fwrite(biblioteca,sizeof(items),cantidad,archivo);
     fclose(archivo);
     rapido();
-    cout << "\n";
     cout << "************************************************************\n";
     cout << "*                                                          *\n";
     cout << "*           DATOS GUARDADOS CORRECTAMENTE                  *\n";
     cout << "*                                                          *\n";
     cout << "************************************************************\n";
-    pausa();
+    Sleep(1000);
     system("cls");
     generarreporte();
 }
@@ -490,6 +490,4 @@ void generarreporte(){
                 "-----------------------------------------\n");
     }
     fclose(reporte);
-    cout << "\nReporte TXT generado \n";
-    pausa();
 }
